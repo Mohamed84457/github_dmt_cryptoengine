@@ -1,0 +1,290 @@
+/* App.css - visual polish only (no logic changes) */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap");
+
+:root {
+  --bg1: linear-gradient(135deg, #f6f8ff 0%, #eef6ff 100%);
+  --card-bg: #ffffff;
+  --accent: #0052d5;
+  --muted: #6b7280;
+  --radius: 12px;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial;
+  background: var(--bg1);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Root page layout */
+.pageRoot {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+/* Card container */
+.cardRoot {
+  width: min(920px, 92%);
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 30px rgba(16, 24, 40, 0.08);
+  padding: 22px;
+  border: 1px solid rgba(2, 6, 23, 0.04);
+  overflow: hidden;
+}
+
+/* Header */
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+}
+.cardHeader h1 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.subtitle {
+  margin: 6px 0 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* Body layout */
+.cardBody {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+/* Input group column (DynamicInput components will flow here) */
+.inputsColumn {
+  display: grid;
+  gap: 12px;
+}
+
+/* Section titles */
+.section {
+  margin-top: 4px;
+}
+
+.sectionTitle {
+  margin: 0 0 8px 0;
+  font-size: 15px;
+  color: #0f172a;
+  font-weight: 600;
+}
+
+/* Form row (select etc) */
+.formRow {
+  display: flex;
+  gap: 12px;
+}
+
+/* Toggle buttons */
+.toggleRow {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 6px;
+}
+
+.toggleBtn {
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding: 14px 22px;
+  border-radius: 10px;
+  cursor: pointer;
+  min-width: 140px;
+  font-weight: 600;
+  background: #e6eefc;
+  color: #123;
+  transition: all 0.3s ease;
+}
+.toggleBtn:hover {
+  box-shadow: 1px 1px 5px #000;
+}
+.toggleBtn.active {
+  background: linear-gradient(90deg, #3370ac 0%, #0052d5 100%);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 82, 213, 0.18);
+}
+
+/* Result field */
+.resultRow {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.resultField {
+  width: 100%;
+  border-radius: 10px;
+  background: #f8fafc;
+  --MuiFilledInput-root: {
+    background: transparent;
+  }
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 6px;
+}
+
+.confirmBtn {
+  width: 100%;
+  max-width: 520px;
+  padding: 12px 20px;
+  background: linear-gradient(90deg, #3370ac 0%, #0052d5 100%);
+  color: white;
+  border-radius: 10px;
+  font-weight: 700;
+  box-shadow: 0 8px 24px rgba(2, 6, 23, 0.08);
+}
+
+/* Material overrides for consistent spacing */
+.MuiFormControl-root {
+  font-size: 14px;
+}
+
+/* Responsive tweaks */
+@media (min-width: 880px) {
+  .cardBody {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
+.historytable {
+  width: 100%;
+  border-collapse: separate; /* allows border-radius on table */
+  border-spacing: 0;
+  border-radius: 12px;
+  margin-top: 20px;
+  font-size: 16px;
+  overflow: hidden; /* round corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* subtle shadow */
+  background-color: #fff;
+}
+
+.historytable thead th {
+  background-color: #4f46e5;
+  color: #fff;
+  padding: 14px;
+  text-align: left;
+  font-weight: 600;
+}
+
+.historytable tbody td {
+  padding: 12px;
+  border-bottom: 1px solid #e0e0e0;
+  transition: background-color 0.2s;
+}
+
+.historytable tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.historytable tbody tr:hover {
+  background-color: #f1f3ff;
+  transform: scale(1.01);
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+/* Rounded corners for thead and last row */
+.historytable thead tr:first-child th:first-child {
+  border-top-left-radius: 12px;
+}
+.historytable thead tr:first-child th:last-child {
+  border-top-right-radius: 12px;
+}
+.historytable tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 12px;
+}
+.historytable tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 12px;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 768px) {
+  .historytable,
+  .historytable thead,
+  .historytable tbody,
+  .historytable th,
+  .historytable td,
+  .historytable tr {
+    display: block;
+  }
+
+  .historytable thead tr {
+    display: none;
+  }
+
+  .historytable tbody tr {
+    margin-bottom: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 10px;
+    background-color: #fff;
+  }
+
+  .historytable tbody td {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .historytable tbody td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    flex-basis: 40%;
+    color: #555;
+  }
+}
+
+.clearbtn {
+  align-self: flex-end;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 5px;
+  background-color: #e10707;
+  color: #fff;
+  letter-spacing: 1px;
+
+  padding: 14px 23px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease; /* instead of just '0.3s' */
+}
+.clearbtn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 1px 1px 8px #000;
+}
+.clearbtn:active {
+  color: #000;
+  background-color: #c00606; /* slight darker shade for pressed effect */
+}
